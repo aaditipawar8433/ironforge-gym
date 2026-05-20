@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Account | IronForge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body{
+            background: url("images/gym-bg.jpg") center/cover no-repeat;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+        .form-box{
+            background:#111;
+            padding:40px;
+            border-radius:10px;
+            width:350px;
+            color:white;
+        }
+        input{
+            width:100%;
+            padding:10px;
+            margin:10px 0;
+        }
+        button{
+            width:100%;
+            padding:10px;
+            background:red;
+            color:white;
+            border:none;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-box">
+    <h2>Create Account</h2>
+
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="saveAccount()">Create Account</button>
+</div>
+
+<script>
+function saveAccount(){
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userPassword", password);
+
+    alert("Account Created! Now setup profile.");
+    window.location.href = "profile-setup.html";
+}
+</script>
+
+</body>
+</html>
