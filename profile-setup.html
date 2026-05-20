@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile Setup</title>
+    <style>
+        body{
+            background:#111;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            color:white;
+        }
+        .box{
+            background:#222;
+            padding:40px;
+            border-radius:10px;
+            width:400px;
+        }
+        input, select{
+            width:100%;
+            padding:10px;
+            margin:8px 0;
+        }
+        button{
+            width:100%;
+            padding:10px;
+            background:red;
+            color:white;
+            border:none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Complete Your Profile</h2>
+
+    <input type="text" id="name" placeholder="Name">
+    <select id="gender">
+        <option>Male</option>
+        <option>Female</option>
+    </select>
+    <input type="number" id="age" placeholder="Age">
+    <input type="number" id="weight" placeholder="Weight (kg)">
+    <input type="number" id="height" placeholder="Height (cm)">
+    <input type="file" id="picture">
+
+    <button onclick="saveProfile()">Save Profile</button>
+</div>
+
+<script>
+function saveProfile(){
+    localStorage.setItem("name", document.getElementById("name").value);
+    localStorage.setItem("gender", document.getElementById("gender").value);
+    localStorage.setItem("age", document.getElementById("age").value);
+    localStorage.setItem("weight", document.getElementById("weight").value);
+    localStorage.setItem("height", document.getElementById("height").value);
+
+    let file = document.getElementById("picture").files[0];
+    let reader = new FileReader();
+
+    reader.onload = function(){
+        localStorage.setItem("profilePic", reader.result);
+        window.location.href = "index.html";
+    }
+
+    if(file){
+        reader.readAsDataURL(file);
+    }
+}
+</script>
+
+</body>
+</html>
